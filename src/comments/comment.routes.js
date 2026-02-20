@@ -2,42 +2,37 @@
 
 import { Router } from 'express';
 import {
-    createPost,
-    getPosts,
-    getMyPosts,
-    updatePost,
-    deletePost
-} from './publication.controller.js';
+    createComment,
+    getPostComments,
+    updateComment,
+    deleteComment
+} from './comment.controller.js';
 
 import { validateJWT } from '../../middlewares/validate-JWT.js';
 
 const router = Router();
 
-
-router.get('/', getPosts);
-
 router.get(
-    '/mine', 
-    validateJWT, 
-    getMyPosts
+    '/post/:postId', 
+    getPostComments
 );
 
 router.post(
-    '/', 
+    '/post/:postId', 
     validateJWT, 
-    createPost
+    createComment
 );
 
 router.put(
     '/:id', 
     validateJWT, 
-    updatePost
+    updateComment
 );
 
 router.delete(
     '/:id', 
     validateJWT, 
-    deletePost
+    deleteComment
 );
 
 export default router;

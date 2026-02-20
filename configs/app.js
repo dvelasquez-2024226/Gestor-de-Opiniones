@@ -11,8 +11,9 @@ import { requestLimit } from './rateLimit.configuration.js';
 import { errorHandler } from '../middlewares/handle-errors.js';
 import userRoutes from '../src/users/user.routes.js';
 import postRoutes from '../src/publications/publication.routes.js';
+import commentRoutes from '../src/comments/comment.routes.js';
 
-const BASE_PATH = '/control-de-opiniones/v1';
+const BASE_PATH = '/gestor-de-opiniones/v1';
 
 /* MIDDLEWARES GLOBALES */
 const middlewares = (app) => {
@@ -34,12 +35,15 @@ const routes = (app) => {
     // Publicaciones
     app.use(`${BASE_PATH}/posts`, postRoutes);
 
+    // Comentarios
+    app.use(`${BASE_PATH}/comments`, commentRoutes);
+
 
     // Health Check
     app.get(`${BASE_PATH}/health`, (req, res) => {
         res.status(200).json({
             status: 'healthy',
-            service: 'Control de Opiniones API'
+            service: 'Gestor de Opiniones API'
         });
     });
 };
