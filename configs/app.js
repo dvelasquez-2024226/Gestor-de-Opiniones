@@ -10,6 +10,7 @@ import { helmetOptions } from './helmet.configuration.js';
 import { requestLimit } from './rateLimit.configuration.js';
 import { errorHandler } from '../middlewares/handle-errors.js';
 import userRoutes from '../src/users/user.routes.js';
+import postRoutes from '../src/publications/publication.routes.js';
 
 const BASE_PATH = '/control-de-opiniones/v1';
 
@@ -29,6 +30,9 @@ const routes = (app) => {
 
     // Usuarios (registro, login, perfil)
     app.use(`${BASE_PATH}/users`, userRoutes);
+
+    // Publicaciones
+    app.use(`${BASE_PATH}/posts`, postRoutes);
 
 
     // Health Check
