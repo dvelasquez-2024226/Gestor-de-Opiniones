@@ -29,13 +29,13 @@ router.post(
 );
 
 router.put(
-    '/id', 
+    '/:id', 
     validateJWT, 
     updatePost
 );
 
 router.delete(
-    '/id', 
+    '/:id', 
     validateJWT, 
     deletePost
 );
